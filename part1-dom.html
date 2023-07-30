@@ -116,26 +116,26 @@
         <input type="button" id="walkBtn" value="Walk">
         <input type="button" id="advanceWalkBtn" value="Advance Walk">
         <textarea id="myTextField"></textarea>
-<!--
-    Q1a) Modify the simple walk button example to not use alerts but instead to print out the node information 
-    on the page in a <textarea> within this fieldset. 
-    Using appropriate spacing or returns, so we can see each step
+        <!--
+            Q1a) Modify the simple walk button example to not use alerts but instead to print out the node information 
+            on the page in a <textarea> within this fieldset. 
+            Using appropriate spacing or returns, so we can see each step
 
-    Q1b) Add a new button "Advanced Walk" that does the following:
-    Walks the entire tree starting at the root and spits out the node structure into the <textarea> in the fieldset.  
-    You should indent each level by 4 spaces or you may use -- and other characters like | 
-    to make a little tree in the textarea tag. 
-    This is your choice.  
+            Q1b) Add a new button "Advanced Walk" that does the following:
+            Walks the entire tree starting at the root and spits out the node structure into the <textarea> in the fieldset.  
+            You should indent each level by 4 spaces or you may use -- and other characters like | 
+            to make a little tree in the textarea tag. 
+            This is your choice.  
 
-    Advanced students may create elements on the page and make a sophisticated, but be forewarned if 
-    you are casual about this you may create an infinite traversal. 
-    If you do this more advanced approach you should consider a DocumentFragment to build up the tree
-    and then add it to the DOM all at once.
+            Advanced students may create elements on the page and make a sophisticated, but be forewarned if 
+            you are casual about this you may create an infinite traversal. 
+            If you do this more advanced approach you should consider a DocumentFragment to build up the tree
+            and then add it to the DOM all at once.
 
-    Hint: This walk can be done in at least two ways if not more.
-    Doing a brute force traversal may not be the most direct way of doing things. 
-    Looking over more advanced DOM discussions at MDN may reveal other approaches.
--->
+            Hint: This walk can be done in at least two ways if not more.
+            Doing a brute force traversal may not be the most direct way of doing things. 
+            Looking over more advanced DOM discussions at MDN may reveal other approaches.
+        -->
 
     </fieldset>
 
@@ -143,16 +143,16 @@
         <legend>Modify</legend>
         <label for="modifyBtn">Simple Modification</label>
         <input type="button" id="modifyBtn" value="Modify">
-<!--
-    Q2) Add a new button "Advanced Modify" that does the following:
-    1.  Changes the text of the h1 to say "DOM Manipulation is Fun!"
-    2.  Changes the color of the h1 to a random dark color from one of the 5 CSS variables defined 
-    in the style tag above.  You can use the Math.random() function.
-    3. Sets the class of the p tag to "shmancy" so that does a new CSS text effect of your own design. 
-    You can find something on the internet (please cite the URL of your inspiration) or make up your own.  
-    You can use the classList property as you like, but make sure you toggle the animation class on and off 
-    every time you push the button.
--->
+        <!--
+            Q2) Add a new button "Advanced Modify" that does the following:
+            1.  Changes the text of the h1 to say "DOM Manipulation is Fun!"
+            2.  Changes the color of the h1 to a random dark color from one of the 5 CSS variables defined 
+            in the style tag above.  You can use the Math.random() function.
+            3. Sets the class of the p tag to "shmancy" so that does a new CSS text effect of your own design. 
+            You can find something on the internet (please cite the URL of your inspiration) or make up your own.  
+            You can use the classList property as you like, but make sure you toggle the animation class on and off 
+            every time you push the button.
+        -->
         <label for="advanceModifyBtn">Advanced Modification</label>
         <input type="button" id="advanceModifyBtn" value="Advance Modify">
     </fieldset>
@@ -162,19 +162,19 @@
         <label for="addBtn">Basic Addition</label>
         <input type="button" id="addBtn" value="Add">
 
-<!--
-    Q3) Add a select menu that allows you to add a new element to the DOM.  
-    The select menu should have the following options: Text Node, Comment, and Element. 
-    When you select one of these options and click the button, the appropriate element should be 
-    added to the DOM.  
-    You may want to define an output tag to put the newly created elements in it and style it in 
-    a fashion with a border or background color, so you can tell it is new content.  
-    You will need a corresponding text field to define the contents of the text node, comment text,
-    or tag name you want to insert.  By default set the text of any added element to say "New Element"
-    or "New Comment" or "New Text Node" depending on the type of element you are adding but add in the
-    current date and time using a JS Date object.  You can use the toLocaleString() method to get a 
-    nicely formatted date and time string.
--->
+        <!--
+            Q3) Add a select menu that allows you to add a new element to the DOM.  
+            The select menu should have the following options: Text Node, Comment, and Element. 
+            When you select one of these options and click the button, the appropriate element should be 
+            added to the DOM.  
+            You may want to define an output tag to put the newly created elements in it and style it in 
+            a fashion with a border or background color, so you can tell it is new content.  
+            You will need a corresponding text field to define the contents of the text node, comment text,
+            or tag name you want to insert.  By default set the text of any added element to say "New Element"
+            or "New Comment" or "New Text Node" depending on the type of element you are adding but add in the
+            current date and time using a JS Date object.  You can use the toLocaleString() method to get a 
+            nicely formatted date and time string.
+        -->
 
         <label for="addBtn">Advanced Addition</label>
         <input type="button" id="advancedAddBtn" value="Advanced Add">
@@ -196,15 +196,23 @@
         <legend>Remove</legend>
         <label for="removeBtn">Simple Delete</label>
         <input type="button" id="removeBtn" value="Remove">
-<!--
-Q4a) Safe Delete
-add a new button to do a safe delete that deletes all the elements from the bottom up but skips over 
-deleting the buttons and things in the section with all these demo controls
+        <!--
+        Q4a) Safe Delete
+        add a new button to do a safe delete that deletes all the elements from the bottom up but skips over 
+        deleting the buttons and things in the section with all these demo controls
 
-Q4b) Delete by selector
-add a text field and a button to the fieldset that allows you to type a CSS selector and then 
-delete all the elements that match that selector.
--->
+        Q4b) Delete by selector
+        add a text field and a button to the fieldset that allows you to type a CSS selector and then 
+        delete all the elements that match that selector.
+        -->
+
+        <label for="safeDeleteBtn">Safe Delete</label>
+        <input type="button" id="safeDeleteBtn" value="Safe Delete">
+
+        <label for="deleteBySelector">Delete by Selector</label>
+        <input type="text" id="deleteSelector">
+        <input type="button" id="deleteBySelector" value="Delete by Selector">
+
     </fieldset>
 
     <fieldset>

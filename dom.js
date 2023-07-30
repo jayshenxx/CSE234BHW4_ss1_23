@@ -37,6 +37,16 @@ function init() {
     element.addEventListener('click', function () {
         remove();
     });
+
+    element = document.getElementById('safeDeleteBtn');
+    element.addEventListener('click', function () {
+        safeDelete();
+    });
+
+    element = document.getElementById('deleteBySelector');
+    element.addEventListener('click', function () {
+        deleteBySelector();
+    });
 }
 
 function walk() {
@@ -175,7 +185,6 @@ function add() {
     // clearly short hands are pretty easy!
 }
 
-
 function advancedAdd() {
 
     const element = document.getElementById('selectToAdd');
@@ -200,18 +209,35 @@ function advancedAdd() {
         newElement.textContent = 'New Element ' + formattedDate;    
         newElement.className = 'new';
     }
-
-
     newElement.value += formattedDate;
-
     let addBox = document.getElementById('addBox');
     addBox.appendChild(newElement);
-
 }
 
 
 function remove() {
   document.body.removeChild(document.body.lastChild);
 }
+
+
+function safeDelete() {
+
+    let element = document.body.lastChild;
+    if (element.className == "") {
+        document.body.removeChild(element);
+    }
+    
+}
+
+function deleteBySelector() {
+
+    const selector = document.getElementById('deleteSelector').value;
+    const elements = document.querySelectorAll(selector);
+
+    elements.forEach(element => {
+        element.remove();
+    });
+}
+
 
 window.addEventListener('DOMContentLoaded', init);
