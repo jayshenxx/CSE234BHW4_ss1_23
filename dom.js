@@ -122,7 +122,6 @@ function showNode(el) {
     textField.value += `\n-------------------\n`;
     
     console.log(`Node type: ${nodeType}\nNode name: ${nodeName}\nNode value: ${nodeValue}`);
-    // alert(`Node type: ${nodeType}\nNode name: ${nodeName}\nNode value: ${nodeValue}`);
 }
 
 function modify() {
@@ -159,7 +158,7 @@ function advanceModify() {
     const root = document.querySelector(':root');
     const color = getComputedStyle(root).getPropertyValue(colorValue); 
     element.style.color = color;
-    console.log(color);
+    alert(color);
 
     //part 3
     const ps = document.querySelectorAll('p');
@@ -230,13 +229,25 @@ function remove() {
 }
 
 
+// not fisniehd !!! todo 
 function safeDelete() {
-
     let element = document.body.lastChild;
-    if (element.className == "") {
+    
+    if (element.id == "controls") {
+        
+        if (element.previousElementSibling)  {
+            console.log("got here");
+            document.body.removeChild(element.previousElementSibling);
+        }
+        else {
+            alert("warning: nothing left to delete!");
+        }
+
+    } else {
         document.body.removeChild(element);
     }
-    
+
+    console.log("deleting<" + element.nodeName + "> :" + element.nodeValue);
 }
 
 function deleteBySelector() {
