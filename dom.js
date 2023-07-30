@@ -6,15 +6,32 @@ function init() {
         walk();
     });
 
+    element = document.getElementById('advanceWalkBtn');
+    element.addEventListener('click', function () {
+        advanceWalk();
+    });
+
     element = document.getElementById('modifyBtn');
     element.addEventListener('click', function () {
         modify();
+    });
+
+    element = document.getElementById('advanceModifyBtn');
+    element.addEventListener('click', function () {
+        advanceModify();
     });
 
     element = document.getElementById('addBtn');
     element.addEventListener('click', function () {
         add();
     });
+
+
+    element = document.getElementById('advancedAddBtn');
+    element.addEventListener('click', function () {
+        advancedAdd();
+    });
+
 
     element = document.getElementById('removeBtn');
     element.addEventListener('click', function () {
@@ -42,16 +59,50 @@ function walk() {
 
    el = el.querySelector('section > *');
    showNode(el);
-
-
 }
+
+function advanceWalk() {
+    let root;
+    root = document.documentElement;
+    traverseDOM(root,0);
+}
+
+//recursively traverse the DOM
+function traverseDOM(element,level) {
+
+    let nodeName = element.nodeName;
+    var textField = document.getElementById('myTextField');
+    textField.value += `(${level})`;
+    textField.value += nodeName;
+    textField.value += "\n";
+    
+    level++;
+
+    const children = element.children;
+    for (let i = 0; i < children.length; i++) {
+        const child = children[i];
+
+        //levels determines how many indentation 
+        for (let i = 0; i < level; i++) {
+            textField.value += "    ";
+        }
+
+        traverseDOM(child,level);
+    }
+}
+
 
 function showNode(el) {
     let nodeType = el.nodeType;
     let nodeName = el.nodeName;
     let nodeValue = el.nodeValue;
 
-    alert(`Node type: ${nodeType}\nNode name: ${nodeName}\nNode value: ${nodeValue}`);
+    var textField = document.getElementById('myTextField');
+    textField.value += `Node type: ${nodeType}\nNode name: ${nodeName}\nNode value: ${nodeValue}`;
+    textField.value += `\n-------------------\n`;
+    
+    console.log(`Node type: ${nodeType}\nNode name: ${nodeName}\nNode value: ${nodeValue}`);
+    // alert(`Node type: ${nodeType}\nNode name: ${nodeName}\nNode value: ${nodeValue}`);
 }
 
 function modify() {
@@ -74,8 +125,29 @@ function modify() {
     // you can also update the dataset which change data-* attributes
     el.dataset.cool = 'true';       // data-cool="true"
     el.dataset.coolFactor = '9000'; //data-cool-factor="9000"
-
 }
+
+function advanceModify() {
+
+    //part 1
+    let element = document.getElementById('myHeading1');
+    element.textContent = 'DOM Manipulation is Fun!';
+
+    //part 2
+    let randomValue = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
+    let colorValue = "--darkcolor" + randomValue;
+    const root = document.querySelector(':root');
+    const color = getComputedStyle(root).getPropertyValue(colorValue); 
+    element.style.color = color;
+    console.log(color);
+
+    //part 3
+    const ps = document.querySelectorAll('p');
+    ps.forEach(p => {
+        p.classList.toggle('shmancy');
+    });
+}
+
 
 function add() {
 
@@ -102,6 +174,41 @@ function add() {
     // oldP.insertAdjacentHTML('afterend', '<p>This is a<em>test</em> of the DOM</p>');
     // clearly short hands are pretty easy!
 }
+
+
+function advancedAdd() {
+
+    const element = document.getElementById('selectToAdd');
+    const selected = element.value;
+
+    const date = new Date();
+    const formattedDate = date.toLocaleString(); 
+
+    let newElement;
+    if (selected == "text") {
+        const content = "New Text Node " + formattedDate + "\n";
+        newElement = document.createTextNode(content);
+    }
+
+    else if (selected == "comment") {
+        const content = "New Comment " + formattedDate;
+        newElement = document.createComment(content);
+    }
+
+    else {
+        newElement = document.createElement('p');
+        newElement.textContent = 'New Element ' + formattedDate;    
+        newElement.className = 'new';
+    }
+
+
+    newElement.value += formattedDate;
+
+    let addBox = document.getElementById('addBox');
+    addBox.appendChild(newElement);
+
+}
+
 
 function remove() {
   document.body.removeChild(document.body.lastChild);
