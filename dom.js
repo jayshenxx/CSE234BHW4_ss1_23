@@ -47,6 +47,16 @@ function init() {
     element.addEventListener('click', function () {
         deleteBySelector();
     });
+
+    element = document.getElementById('basicClone');
+    element.addEventListener('click', function () {
+        clone();
+    });
+
+    element = document.getElementById('advancedClone');
+    element.addEventListener('click', function () {
+        advancedClone();
+    });
 }
 
 function walk() {
@@ -239,5 +249,27 @@ function deleteBySelector() {
     });
 }
 
+function clone() {
+    const toClone = document.getElementById('toClone');
+    const cloned = toClone.cloneNode(true); 
+    document.body.appendChild(cloned); 
+}
+
+function advancedClone() {
+    const template = document.getElementById('template');
+    const body = document.body;
+    const card = template.content.cloneNode(true);
+
+    const random = Math.floor(Math.random() * 1000) + 1;
+    const title = "Card:" + random;
+    const image = `https://source.unsplash.com/random/?software&` + random;
+    const text = "This is a text for Card:" + random;
+
+    card.querySelector('.card-title').textContent = title;
+    card.querySelector('.card-image').src = image;
+    card.querySelector('.card-text').textContent = text;
+
+    body.appendChild(card);
+}
 
 window.addEventListener('DOMContentLoaded', init);
