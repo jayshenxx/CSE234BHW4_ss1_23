@@ -229,7 +229,6 @@ function remove() {
 }
 
 
-// not fisniehd !!! todo 
 function safeDelete() {
     let element = document.body.lastChild;
     
